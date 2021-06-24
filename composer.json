@@ -1,0 +1,51 @@
+{
+    "name": "lekoala/silverstripe-pure-modal",
+    "description": "Dead simple modals for SilverStripe (works in the admin too!)",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "silverstripe",
+        "modal",
+        "css",
+        "i18n",
+        "module",
+        "cms"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LeKoala",
+            "email": "thomas@lekoala.be"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "silverstripe/recipe-plugin": "^1",
+        "silverstripe/recipe-cms": "^4.4"
+    },
+    "require-dev": {
+        "sminnee/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "extra": {
+        "installer-name": "pure-modal",
+        "expose": [
+            "client"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "LeKoala\\pure-modal\\": "src/",
+            "LeKoala\\pure-modal\\Test\\": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/lekoala/silverstripe-pure-modal/issues"
+    },
+    "scripts": {
+        "lint": "phpcs src/ tests/",
+        "lint-clean": "phpcbf src/ tests/",
+        "test": "phpunit -v"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
