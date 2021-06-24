@@ -22,6 +22,25 @@ $ImportStuff->setIframeAction('import_stuff');
 $ImportStuff->setIframeTop(true);
 ```
 
+And here is a sample `import_stuff` method
+
+```php
+public function import_stuff(HTTPRequest $req)
+{
+    $Stuff = $this->getRequestedRecord();
+    $fields = new FieldList([
+        new FileField('File'),
+        new HiddenField('StuffID', null, $Stuff->ID),
+    ]);
+    $actions = new FieldList([
+        new FormAction('doUpload', 'Upload')
+    ]);
+    $form = new Form(Controller::curr(), 'MyForm', $fields, $actions);
+
+    return PureModal::renderDialog($this, ['Form' => $form]);
+}
+```
+
 ## Compatibility
 
 Tested with 4.x

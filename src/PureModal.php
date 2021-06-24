@@ -38,6 +38,22 @@ class PureModal extends LiteralField
         $this->title = $title;
     }
 
+    /**
+     * Render a dialog
+     *
+     * @param Controller $controller
+     * @param array $customFields
+     * @return string
+     */
+    public static function renderDialog($controller, $customFields = null)
+    {
+        // Set empty content by default otherwise it will render the full page
+        if (empty($customFields['Content'])) {
+            $customFields['Content'] = '';
+        }
+        return $controller->renderWith('PureModal', $customFields);
+    }
+
     public function FieldHolder($properties = array())
     {
         Requirements::javascript('lekoala/silverstripe-pure-modal: client/pure-modal.js');
