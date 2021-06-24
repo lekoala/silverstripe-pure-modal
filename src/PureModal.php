@@ -81,12 +81,12 @@ class PureModal extends LiteralField
         $content .= '<label for="' . $modalID . '" class="close">&#10006;</label>';
         // Iframe if set and top
         if ($this->iframe && $this->iframeTop) {
-            $content .= '<iframe id="' . $modalID . '_iframe" src="' . $this->iframe . '" width="100%%" style="max-height:400px" frameBorder="0" scrolling="auto"></iframe>';
+            $content .= '<iframe id="' . $modalID . '_iframe" src="' . $this->iframe . '" width="100%%" loading="lazy" style="max-height:400px" frameBorder="0" scrolling="auto"></iframe>';
         }
         $content .= $this->content;
         // Iframe if set and not top
         if ($this->iframe && !$this->iframeTop) {
-            $content .= '<iframe id="' . $modalID . '_iframe"  src="' . $this->iframe . '" width="100%%" style="max-height:400px" frameBorder="0" scrolling="auto"></iframe>';
+            $content .= '<iframe id="' . $modalID . '_iframe"  src="' . $this->iframe . '" width="100%%" loading="lazy" style="max-height:400px" frameBorder="0" scrolling="auto"></iframe>';
         }
         $content .= '</div>';
         $content .= '</div>';
