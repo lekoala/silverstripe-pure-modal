@@ -26,6 +26,9 @@
         "sminnee/phpunit": "^5.7",
         "squizlabs/php_codesniffer": "^3.0"
     },
+    "suggest": {
+        "lekoala/silverstripe-cms-actions": "For PureModalAction support"
+    },
     "extra": {
         "installer-name": "pure-modal",
         "expose": [
