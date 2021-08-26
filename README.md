@@ -41,6 +41,45 @@ public function import_stuff(HTTPRequest $req)
 }
 ```
 
+## Modal action
+
+This feature require my [cms-actions](https://github.com/lekoala/silverstripe-cms-actions) module.
+
+```php
+    public function getCMSActions()
+    {
+        $actions = parent::getCMSActions();
+        $doDeny = new PureModalAction("doDeny", "Deny");
+        $predefinedText = <<<TEXT
+        Dear Customer,
+
+        Your request has been denied.
+
+        Best regards,
+        TEXT;
+        $iframeFields = new FieldList([
+            new DropdownField("SelectReason", "Select reason"),
+            new TextareaField("EnterText", "Enter custom text", $predefinedText),
+        ]);
+        $doDeny->setFieldList($iframeFields);
+        $doDeny->setShouldRefresh(true);
+        $actions->push($doDeny);
+    }
+```
+
+It creates a button that opens a modal with a set of fields. These fields
+are submitted alongside the form.
+
+```php
+    public function doDeny($data)
+    {
+        $this->DeniedReason = $data['EnterText'];
+        $this->Status = "denied";
+        $this->write();
+        return 'Denied';
+    }
+```
+
 ## Compatibility
 
 Tested with 4.x
