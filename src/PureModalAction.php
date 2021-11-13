@@ -18,6 +18,18 @@ class PureModalAction extends LiteralField
     protected $fieldList;
 
     /**
+     * A custom title for the dialog button
+     * @var string
+     */
+    protected $dialogButtonTitle;
+
+    /**
+     * Should it show the dialog button
+     * @var boolean
+     */
+    protected $showDialogButton = true;
+
+    /**
      * An icon for this button
      * @var string
      */
@@ -64,9 +76,11 @@ class PureModalAction extends LiteralField
         $content .= $modalContent;
 
         // Add actual button
-        $content .= '<button type="submit" name="action_' . $this->name . '" class="btn action btn btn-info custom-action">
-            <span class="btn__title">' . $this->getButtonTitle() . '</span>
-        </button>';
+        if($this->showDialogButton) {
+            $content .= '<button type="submit" name="action_' . $this->name . '" class="btn action btn btn-info custom-action">
+                <span class="btn__title">' . $this->getButtonTitle() . '</span>
+            </button>';
+        }
 
         $content .= '</div>';
         $content .= '</div>';
@@ -88,6 +102,31 @@ class PureModalAction extends LiteralField
             $title = '<span class="font-icon-' . $this->buttonIcon . '"></span> ' . $title;
         }
         return $title;
+    }
+
+    /**
+     * Get the dialog button title with icon if set
+     *
+     * @return string
+     */
+    protected function getDialogButtonTitle()
+    {
+        $title = $this->buttonTitle ?: $this->title;
+        if ($this->buttonIcon) {
+            $title = '<span class="font-icon-' . $this->buttonIcon . '"></span> ' . $title;
+        }
+        return $title;
+    }
+
+    /**
+     * Set dialog button customised button title
+     *
+     * @return self
+     */
+    public function setDialogButtonTitle($value)
+    {
+        $this->buttonTitle = $value;
+        return $this;
     }
 
 
@@ -112,6 +151,27 @@ class PureModalAction extends LiteralField
     public function setButtonIcon(string $buttonIcon)
     {
         $this->buttonIcon = $buttonIcon;
+        return $this;
+    }
+
+    /**
+     * Get whether it must display the dialog button
+     *
+     * @return boolean
+     */
+    protected function getShowDialogButton()
+    {
+        return $this->showDialogButton;
+    }
+
+    /**
+     * Set whether it must display the dialog button
+     *
+     * @return self
+     */
+    public function setShowDialogButton($value)
+    {
+        $this->showDialogButton = !!$value;
         return $this;
     }
 
