@@ -28,6 +28,13 @@ class PureModalAction extends LiteralField
      */
     protected $shouldRefresh = false;
 
+    /**
+     * Whether to place the button in a dot-menu.
+     * @see https://github.com/lekoala/silverstripe-cms-actions
+     * @var bool
+     */
+    protected $dropUp = false;
+
     public function __construct($name, $title)
     {
         $name = 'doCustomAction[' . $name . ']';
@@ -135,6 +142,31 @@ class PureModalAction extends LiteralField
     public function setFieldList(FieldList $fieldList)
     {
         $this->fieldList = $fieldList;
+        return $this;
+    }
+
+    /**
+     * Get the dropUp value
+     * Called by ActionsGridFieldItemRequest to determine placement
+     *
+     * @see https://github.com/lekoala/silverstripe-cms-actions
+     * @return bool
+     */
+    public function getDropUp()
+    {
+        return $this->dropUp;
+    }
+
+    /**
+     * Set the value of dropUp
+     *
+     * @see https://github.com/lekoala/silverstripe-cms-actions
+     * @param bool $is
+     * @return $this
+     */
+    public function setDropUp($is)
+    {
+        $this->dropUp = !!$is;
         return $this;
     }
 
