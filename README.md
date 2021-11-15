@@ -63,6 +63,7 @@ This feature require my [cms-actions](https://github.com/lekoala/silverstripe-cm
         ]);
         $doDeny->setFieldList($iframeFields);
         $doDeny->setShouldRefresh(true);
+        $doDeny->setDialogButtonTitle('Deny the request'); // customised modal submit button
         $actions->push($doDeny);
     }
 ```
@@ -77,6 +78,22 @@ are submitted alongside the form.
         $this->Status = "denied";
         $this->write();
         return 'Denied';
+    }
+```
+
+You can remove the submit button from the modal itself, for example to make it an information window only.
+By doing like this:
+
+```php
+    public function getCMSActions()
+    {
+        $actions = parent::getCMSActions();
+        $doDeny = new PureModalAction("noopInfo", "Information");
+
+        // .. add fields
+
+        $doDeny->setShowDialogButton(false);
+        $actions->push($doDeny);
     }
 ```
 
