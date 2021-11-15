@@ -83,7 +83,7 @@ class PureModalAction extends LiteralField
         $content .= $modalContent;
 
         // Add actual button
-        if($this->showDialogButton) {
+        if ($this->showDialogButton) {
             $content .= '<button type="submit" name="action_' . $this->name . '" class="btn action btn btn-info custom-action">
                 <span class="btn__title">' . $this->getButtonTitle() . '</span>
             </button>';
