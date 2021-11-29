@@ -1,7 +1,7 @@
 <% require javascript('lekoala/silverstripe-pure-modal: client/pure-modal.js') %>
 <% require css('lekoala/silverstripe-pure-modal: client/pure-modal.css') %>
 
-<label for="$ModalID" class="btn btn-primary"' . $attrs . ' onclick="' . $onclick . '">
+<label for="$ModalID" class="btn btn-primary" $AttributesHTML>
     $Title
 </label>
 <div class="pure-modal from-top">
