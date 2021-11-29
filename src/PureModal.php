@@ -3,9 +3,10 @@
 namespace LeKoala\PureModal;
 
 use SilverStripe\Admin\ModelAdmin;
-use SilverStripe\View\Requirements;
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\DatalessField;
+use SilverStripe\Forms\FormField;
+use SilverStripe\View\SSViewer;
 
 /**
  * A simple pure css modal for usage in the cms
@@ -15,7 +16,7 @@ use SilverStripe\Forms\LiteralField;
  *
  * @author lekoala
  */
-class PureModal extends LiteralField
+class PureModal extends DatalessField
 {
     /**
      * @var string
@@ -34,8 +35,18 @@ class PureModal extends LiteralField
 
     public function __construct($name, $title, $content)
     {
-        parent::__construct($name, $content);
-        $this->title = $title;
+        $this->setContent($content);
+
+        parent::__construct($name, $title);
+    }
+
+    public function getAttributes()
+    {
+        $attrs = [];
+        if ($this->getIframe()) {
+            $attrs['onclick'] = "resizeIframe('" .$this->getIframeID(). "'))";
+        }
+        return $attrs;
     }
 
     /**
@@ -51,49 +62,33 @@ class PureModal extends LiteralField
         if (empty($customFields['Content'])) {
             $customFields['Content'] = '';
         }
-        return $controller->renderWith('PureModal', $customFields);
+
+        $templates = SSViewer::get_templates_by_class(static::class, '_Dialog', __CLASS__);
+        $templatesWithSuffix = SSViewer::chooseTemplate($templates);
+
+        return $controller->renderWith($templatesWithSuffix, $customFields);
     }
 
-    public function FieldHolder($properties = array())
+    /**
+     * Sets the content of this field to a new value.
+     *
+     * @param string|FormField $content
+     *
+     * @return $this
+     */
+    public function setContent($content)
     {
-        Requirements::javascript('lekoala/silverstripe-pure-modal: client/pure-modal.js');
-        Requirements::css('lekoala/silverstripe-pure-modal: client/pure-modal.css');
-
-        $attrs = '';
-        $modalID = 'modal_' . $this->name;
-
-        $onclick = '';
-        if ($this->iframe) {
-            $onclick = "resizeIframe(document.getElementById(this.getAttribute('for') + '_iframe'))";
-        }
-        $content = '';
-        $content .= '<label for="' . $modalID . '" class="btn btn-primary"' . $attrs . ' onclick="' . $onclick . '">';
-        $content .= $this->title;
-        $content .= '</label>';
-        $content .= '<div class="pure-modal from-top">';
-        // This is how we show the modal
-        $content .= '<input id="' . $modalID . '" class="checkbox" type="checkbox">';
-        $content .= '<div class="pure-modal-overlay">';
-        // Close in overlay
-        $content .= '<label for="' . $modalID . '" class="o-close"></label>';
-        $content .= '<div class="pure-modal-wrap">';
-        // Close icon
-        $content .= '<label for="' . $modalID . '" class="close">&#10006;</label>';
-        // Iframe if set and top
-        if ($this->iframe && $this->iframeTop) {
-            $content .= '<iframe id="' . $modalID . '_iframe" src="' . $this->iframe . '" width="100%%" loading="lazy" style="max-height:400px" frameBorder="0" scrolling="auto"></iframe>';
-        }
-        $content .= $this->content;
-        // Iframe if set and not top
-        if ($this->iframe && !$this->iframeTop) {
-            $content .= '<iframe id="' . $modalID . '_iframe"  src="' . $this->iframe . '" width="100%%" loading="lazy" style="max-height:400px" frameBorder="0" scrolling="auto"></iframe>';
-        }
-        $content .= '</div>';
-        $content .= '</div>';
-        $content .= '</div>';
         $this->content = $content;
 
-        return parent::FieldHolder($properties);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 
     /**
@@ -192,5 +187,23 @@ class PureModal extends LiteralField
     {
         $this->iframeTop = $iframeTop;
         return $this;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getModalID()
+    {
+        return 'modal_' . $this->name;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getIframeID()
+    {
+        return $this->getModalID() . '_iframe';
     }
 }

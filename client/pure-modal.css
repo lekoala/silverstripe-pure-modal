@@ -178,3 +178,32 @@
     opacity: 1;
   }
 }
+
+.cms .pure-modal .pure-modal-wrap {
+    padding: 0;
+}
+.cms .pure-modal .pure-modal-overlay .close {
+    right: 1rem;
+    top: 1rem;
+}
+.cms .pure-modal .toolbar--north h1 {
+    margin-top: 16px;
+}
+
+/* SS4.8 messes up the following when inside a toolbar and we have to revert their styles */
+.cms .pure-modal .pure-modal-wrap .form-group {
+    padding-bottom: 1.2308rem !important;
+}
+.cms .pure-modal .pure-modal-wrap .form-group > label {
+    margin-left: 1.5385rem !important;
+}
+.cms .pure-modal .pure-modal-wrap .btn {
+    width: auto !important;
+}
+.cms .ss-ui-action-tabset.action-menus.ss-tabset .ui-tabs-panel .pure-modal-wrap .CompositeField {
+    margin-left: -1.5385rem;
+}
+.cms .ss-ui-action-tabset.action-menus.ss-tabset .ui-tabs-panel .pure-modal-wrap .form-group:not(.stacked) > label {
+    padding-top: 0.5385rem;
+    padding-bottom: 0.5385rem;
+}

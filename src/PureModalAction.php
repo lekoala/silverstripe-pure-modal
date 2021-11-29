@@ -3,14 +3,13 @@
 namespace LeKoala\PureModal;
 
 use SilverStripe\Forms\FieldList;
-use SilverStripe\View\Requirements;
-use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\DatalessField;
 
 /**
  * Custom modal action
  * Requires cms-actions to work out of the box
  */
-class PureModalAction extends LiteralField
+class CustomPureModalAction extends DatalessField
 {
     /**
      * @var FieldList
@@ -52,49 +51,6 @@ class PureModalAction extends LiteralField
         $name = 'doCustomAction[' . $name . ']';
         $this->title = $title;
         $this->name = $name;
-    }
-
-    public function FieldHolder($properties = array())
-    {
-        Requirements::javascript('lekoala/silverstripe-pure-modal: client/pure-modal.js');
-        Requirements::css('lekoala/silverstripe-pure-modal: client/pure-modal.css');
-
-        $modalContent = '';
-        foreach ($this->fieldList as $field) {
-            $modalContent .= $field->FieldHolder();
-        }
-
-        $attrs = '';
-        $modalID = 'modal_' . $this->name;
-
-        $content = '';
-        $content .= '<label for="' . $modalID . '" class="btn btn-info"' . $attrs . '>';
-        $content .= $this->getButtonTitle();
-        $content .= '</label>';
-        $content .= '<div class="pure-modal from-top">';
-        // This is how we show the modal
-        $content .= '<input id="' . $modalID . '" class="checkbox" type="checkbox">';
-        $content .= '<div class="pure-modal-overlay">';
-        // Close in overlay
-        $content .= '<label for="' . $modalID . '" class="o-close"></label>';
-        $content .= '<div class="pure-modal-wrap">';
-        // Close icon
-        $content .= '<label for="' . $modalID . '" class="close">&#10006;</label>';
-        $content .= $modalContent;
-
-        // Add actual button
-        if ($this->showDialogButton) {
-            $content .= '<button type="submit" name="action_' . $this->name . '" class="btn action btn btn-info custom-action">
-                <span class="btn__title">' . $this->getButtonTitle() . '</span>
-            </button>';
-        }
-
-        $content .= '</div>';
-        $content .= '</div>';
-        $content .= '</div>';
-        $this->content = $content;
-
-        return parent::FieldHolder($properties);
     }
 
     /**
@@ -258,5 +214,15 @@ class PureModalAction extends LiteralField
     {
         $this->shouldRefresh = $shouldRefresh;
         return $this;
+    }
+
+    public function getModalID()
+    {
+        return 'modal_' . $this->name;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
