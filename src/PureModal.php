@@ -26,6 +26,11 @@ class PureModal extends DatalessField
     /**
      * @var string
      */
+    protected $content;
+
+    /**
+     * @var string
+     */
     protected $iframe;
 
     /**
@@ -43,8 +48,9 @@ class PureModal extends DatalessField
     public function getAttributes()
     {
         $attrs = [];
+        // Since the frame is hidden, we need to compute size on click
         if ($this->getIframe()) {
-            $attrs['onclick'] = "resizeIframe('" .$this->getIframeID(). "')";
+            $attrs['onclick'] = "var i=document.querySelector('#" .$this->getIframeID(). "');i.style.height = 0; setTimeout(function() {i.style.height = i.contentWindow.document.body.scrollHeight + 'px';},100);";
         }
         return $attrs;
     }

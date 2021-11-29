@@ -92,7 +92,6 @@ class PureModalAction extends DatalessField
         return $this;
     }
 
-
     /**
      * Get an icon for this button
      *
