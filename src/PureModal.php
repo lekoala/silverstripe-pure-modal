@@ -44,7 +44,7 @@ class PureModal extends DatalessField
     {
         $attrs = [];
         if ($this->getIframe()) {
-            $attrs['onclick'] = "resizeIframe('" .$this->getIframeID(). "'))";
+            $attrs['onclick'] = "resizeIframe('" .$this->getIframeID(). "')";
         }
         return $attrs;
     }
