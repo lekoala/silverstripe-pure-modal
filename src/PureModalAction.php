@@ -9,7 +9,7 @@ use SilverStripe\Forms\DatalessField;
  * Custom modal action
  * Requires cms-actions to work out of the box
  */
-class CustomPureModalAction extends DatalessField
+class PureModalAction extends DatalessField
 {
     /**
      * @var FieldList
