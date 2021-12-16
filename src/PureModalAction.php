@@ -157,6 +157,9 @@ class PureModalAction extends DatalessField
     public function setFieldList(FieldList $fieldList)
     {
         $this->fieldList = $fieldList;
+        foreach ($fieldList->dataFields() as $f) {
+            $f->addExtraClass('no-change-track');
+        }
         return $this;
     }
 

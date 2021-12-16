@@ -4,7 +4,7 @@
     $ButtonTitle
 </label>
 <div class="pure-modal from-top">
-    <input id="$ModalID" class="checkbox" type="checkbox">
+    <input id="$ModalID" class="checkbox no-change-track" type="checkbox">
     <div class="pure-modal-overlay">
         <div class="pure-modal-wrap pure-modal-action fill-height" style="max-height:90vh;">
             <label for="$ModalID" class="pure-modal-close"></label>

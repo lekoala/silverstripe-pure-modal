@@ -51,12 +51,12 @@ This feature require my [cms-actions](https://github.com/lekoala/silverstripe-cm
         $actions = parent::getCMSActions();
         $doDeny = new PureModalAction("doDeny", "Deny");
         $predefinedText = <<<TEXT
-        Dear Customer,
+Dear Customer,
 
-        Your request has been denied.
+Your request has been denied.
 
-        Best regards,
-        TEXT;
+Best regards,
+TEXT;
         $iframeFields = new FieldList([
             new DropdownField("SelectReason", "Select reason"),
             new TextareaField("EnterText", "Enter custom text", $predefinedText),
