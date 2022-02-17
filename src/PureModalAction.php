@@ -12,6 +12,13 @@ use SilverStripe\Forms\DatalessField;
 class PureModalAction extends DatalessField
 {
     /**
+     * Default classes applied in constructor by the FormField
+     * @config
+     * @var array
+     */
+    private static $default_classes = ["btn", "btn-info"];
+
+    /**
      * @var FieldList
      */
     protected $fieldList;
@@ -51,6 +58,8 @@ class PureModalAction extends DatalessField
         $name = 'doCustomAction[' . $name . ']';
         $this->title = $title;
         $this->name = $name;
+
+        parent::__construct($name, $title);
     }
 
     /**
@@ -117,6 +126,27 @@ class PureModalAction extends DatalessField
     }
 
     /**
+     * Set a new type of btn-something. It will remove any existing btn- class
+     * @param string $type Leave blank to simply remove default button type
+     * @return $this
+     */
+    public function setButtonType($type = null)
+    {
+        if ($this->extraClasses) {
+            foreach ($this->extraClasses as $k => $v) {
+                if (strpos($k, 'btn-') !== false) {
+                    unset($this->extraClasses[$k]);
+                }
+            }
+        }
+        if ($type) {
+            $btn = "btn-$type";
+            $this->extraClasses[$btn] = $btn;
+        }
+        return $this;
+    }
+
+    /**
      * Get whether it must display the dialog button
      *
      * @return boolean
@@ -136,8 +166,6 @@ class PureModalAction extends DatalessField
         $this->showDialogButton = !!$value;
         return $this;
     }
-
-
 
     /**
      * Get the value of fieldList
@@ -177,6 +205,7 @@ class PureModalAction extends DatalessField
 
     /**
      * Set the value of dropUp
+     * You might want to call also setButtonType(null) for better styles
      *
      * @see https://github.com/lekoala/silverstripe-cms-actions
      * @param bool $is
