@@ -1,7 +1,7 @@
 <% require css('lekoala/silverstripe-pure-modal: client/pure-modal.css') %>
 
 <label for="$ModalID" class="btn btn-info">
-    $ButtonTitle
+    $ButtonTitle.RAW
 </label>
 <div class="pure-modal from-top">
     <input id="$ModalID" class="checkbox no-change-track" type="checkbox">
