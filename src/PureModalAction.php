@@ -83,7 +83,7 @@ class PureModalAction extends DatalessField
      */
     protected function getDialogButtonTitle()
     {
-        $title = $this->buttonTitle ?: $this->title;
+        $title = $this->dialogButtonTitle ?: $this->title;
         if ($this->buttonIcon) {
             $title = '<span class="font-icon-' . $this->buttonIcon . '"></span> ' . $title;
         }
@@ -97,7 +97,7 @@ class PureModalAction extends DatalessField
      */
     public function setDialogButtonTitle($value)
     {
-        $this->buttonTitle = $value;
+        $this->dialogButtonTitle = $value;
         return $this;
     }
 
