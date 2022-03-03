@@ -21,7 +21,9 @@
             </div>
             <% if $ShowDialogButton %>
                 <div class="toolbar toolbar--south">
-                    <input type="submit" name="action_$Name" class="btn action btn btn-info custom-action" value="$ButtonTitle">
+                    <button type="submit" name="action_$Name" class="action custom-action<% if $extraClass %> $extraClass<% end_if %>">
+                        {$DialogButtonTitle.RAW}
+                    </button>
                 </div>
             <% end_if %>
         </div>
