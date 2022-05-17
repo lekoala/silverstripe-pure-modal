@@ -4,7 +4,7 @@
     $Title
 </label>
 <div class="pure-modal from-top">
-    <input id="$ModalID" class="checkbox no-change-track" type="checkbox">
+    <input id="$ModalID" class="pure-checkbox no-change-track" type="checkbox">
     <div class="pure-modal-overlay">
         <label for="$ModalID" class="pure-modal-close"></label>
         <div class="pure-modal-wrap">
