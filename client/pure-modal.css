@@ -232,3 +232,7 @@
 .admini .pure-modal .pure-modal-action .btn-close span {
     display:none;
 }
+
+.admini .pure-modal .pure-modal-action .toolbar--north h1 {
+    margin-bottom: 0;
+}
