@@ -53,6 +53,11 @@ class PureModalAction extends DatalessField
      */
     protected $dropUp = false;
 
+    /**
+     * @var boolean
+     */
+    protected $fillHeight = true;
+
     public function __construct($name, $title)
     {
         $name = 'doCustomAction[' . $name . ']';
@@ -60,6 +65,14 @@ class PureModalAction extends DatalessField
         $this->name = $name;
 
         parent::__construct($name, $title);
+    }
+
+    public function getAttributes()
+    {
+        $attrs = [];
+        // Move modal to body to avoid nesting issues
+        $attrs['onclick'] = PureModal::getMoveModalScript();
+        return $attrs;
     }
 
     /**
@@ -255,5 +268,16 @@ class PureModalAction extends DatalessField
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function getFillHeight()
+    {
+        return $this->fillHeight;
+    }
+
+    public function setFillHeight($fillHeight)
+    {
+        $this->fillHeight = $fillHeight;
+        return $this;
     }
 }

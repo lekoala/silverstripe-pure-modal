@@ -45,12 +45,22 @@ class PureModal extends DatalessField
         parent::__construct($name, $title);
     }
 
+    public static function getMoveModalScript()
+    {
+        if (!self::config()->move_modal_to_body) {
+            return '';
+        }
+        return "document.body.appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
+    }
+
     public function getAttributes()
     {
         $attrs = [];
+        // Move modal to body to avoid nesting issues
+        $attrs['onclick'] = self::getMoveModalScript();
         // Since the frame is hidden, we need to compute size on click
         if ($this->getIframe()) {
-            $attrs['onclick'] = "var i=document.querySelector('#" .$this->getIframeID(). "');i.style.height = 0; setTimeout(function() {i.style.height = i.contentWindow.document.body.scrollHeight + 'px';},100);";
+            $attrs['onclick'] .= "var i=document.querySelector('#" . $this->getIframeID() . "');i.style.height = 0; setTimeout(function() {i.style.height = i.contentWindow.document.body.scrollHeight + 'px';},100);";
         }
         return $attrs;
     }

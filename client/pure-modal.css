@@ -219,3 +219,16 @@
     padding-top: 0.5385rem;
     padding-bottom: 0.5385rem;
 }
+
+/* admini support */
+
+.admini .pure-modal .pure-modal-action {
+    padding: 0;
+}
+.admini .pure-modal .pure-modal-action .btn-close {
+    top: 0.5rem;
+    float: right;
+}
+.admini .pure-modal .pure-modal-action .btn-close span {
+    display:none;
+}
