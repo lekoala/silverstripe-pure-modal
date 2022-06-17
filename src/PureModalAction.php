@@ -67,6 +67,11 @@ class PureModalAction extends DatalessField
         parent::__construct($name, $title);
     }
 
+    public function getOverlayTriggersClose()
+    {
+        return PureModal::getOverlayTriggersCloseConfig();
+    }
+
     public function getAttributes()
     {
         $attrs = [];

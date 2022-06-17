@@ -53,6 +53,16 @@ class PureModal extends DatalessField
         return "document.body.appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
     }
 
+    public static function getOverlayTriggersCloseConfig()
+    {
+        return self::config()->overlay_triggers_close;
+    }
+
+    public function getOverlayTriggersClose()
+    {
+        return PureModal::getOverlayTriggersCloseConfig();
+    }
+
     public function getAttributes()
     {
         $attrs = [];

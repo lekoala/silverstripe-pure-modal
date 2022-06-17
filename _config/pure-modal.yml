@@ -3,3 +3,4 @@ Name: pure-modal
 ---
 LeKoala\PureModal\PureModal:
   move_modal_to_body: true
+  overlay_triggers_close: true
