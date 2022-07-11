@@ -69,7 +69,8 @@ class PureModal extends DatalessField
         // Move modal to body to avoid nesting issues
         $attrs['onclick'] = self::getMoveModalScript();
         // Since the frame is hidden, we need to compute size on click
-        if ($this->getIframe()) {
+        // TODO: fix this as it may report incorrect height
+        if ($this->getIframe() && self::config()->compute_iframe_height) {
             $attrs['onclick'] .= "var i=document.querySelector('#" . $this->getIframeID() . "');i.style.height = 0; setTimeout(function() {i.style.height = i.contentWindow.document.body.scrollHeight + 'px';},100);";
         }
         return $attrs;
