@@ -5,7 +5,7 @@
 </label>
 <div class="pure-modal from-top">
     <input id="$ModalID" class="pure-checkbox no-change-track" type="checkbox">
-    <div class="pure-modal-overlay"<% if getOverlayTriggersClose %> onclick="document.getElementById('$ModalID').checked=false;"<% end_if %>>
+    <div class="pure-modal-overlay"<% if getOverlayTriggersClose %> onclick="document.getElementById('$ModalID').checked=false;return false;"<% end_if %>>
         <div class="pure-modal-wrap">
             <label for="$ModalID" class="close btn-close"><span>&#10006;</span></label>
             <% if $Iframe && $IframeTop %>
