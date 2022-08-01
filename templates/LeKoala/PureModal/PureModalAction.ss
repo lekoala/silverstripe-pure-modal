@@ -7,7 +7,7 @@
     <input id="$ModalID" class="pure-checkbox no-change-track" type="checkbox">
     <div class="pure-modal-overlay">
         <div class="pure-modal-overlay-close"<% if getOverlayTriggersClose %> onclick="document.getElementById('$ModalID').checked=false;return false;"<% end_if %>></div>
-        <div class="pure-modal-wrap pure-modal-action<% if getFillHeight %> fill-height flex-fill<% end_if %>" style="max-height:90vh;">
+        <div class="pure-modal-wrap pure-modal-action<% if getFillHeight %> fill-height<% end_if %>" style="max-height:90vh;">
                 <label for="$ModalID" class="pure-modal-close"></label>
                 <div class="toolbar toolbar--north row">
                     <h1>$Title</h1>

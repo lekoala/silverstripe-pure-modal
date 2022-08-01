@@ -56,7 +56,7 @@ class PureModalAction extends DatalessField
     /**
      * @var boolean
      */
-    protected $fillHeight = true;
+    protected $fillHeight = false;
 
     public function __construct($name, $title)
     {
