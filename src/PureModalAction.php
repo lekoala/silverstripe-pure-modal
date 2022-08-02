@@ -72,11 +72,20 @@ class PureModalAction extends DatalessField
         return PureModal::getOverlayTriggersCloseConfig();
     }
 
+    public static function getMoveModalScript()
+    {
+        if (!PureModal::config()->move_modal_to_body) {
+            return '';
+        }
+        return "document.getElementById('Form_ItemEditForm').appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
+    }
+
     public function getAttributes()
     {
         $attrs = [];
-        // Move modal to body to avoid nesting issues
-        $attrs['onclick'] = PureModal::getMoveModalScript();
+        // Move modal to form to avoid nesting issues
+        // We cannot append to body because this breaks form submission
+        $attrs['onclick'] = self::getMoveModalScript();
         return $attrs;
     }
 

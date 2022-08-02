@@ -22,7 +22,7 @@
                 </div>
                 <% if $ShowDialogButton %>
                     <div class="toolbar toolbar--south">
-                        <button type="submit" name="action_$Name" class="action custom-action<% if $extraClass %> $extraClass<% end_if %>">
+                        <button type="submit" name="action_$Name" onclick="$SubmitOnClickScript" class="action custom-action<% if $extraClass %> $extraClass<% end_if %>">
                             {$DialogButtonTitle.RAW}
                         </button>
                     </div>

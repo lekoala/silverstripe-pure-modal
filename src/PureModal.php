@@ -12,7 +12,7 @@ use SilverStripe\View\SSViewer;
  * A simple pure css modal for usage in the cms
  *
  * If your content contains a form, it should be loaded through an iframe
- * because you cannot nest forms
+ * because you cannot nest forms (warning, this gets tricky with "move_modal_to_body")
  *
  * @author lekoala
  */
@@ -106,7 +106,6 @@ class PureModal extends DatalessField
     public function setContent($content)
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -160,7 +159,6 @@ class PureModal extends DatalessField
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -181,7 +179,6 @@ class PureModal extends DatalessField
     public function setIframe($iframe)
     {
         $this->iframe = $iframe;
-
         return $this;
     }
 
