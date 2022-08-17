@@ -2,6 +2,7 @@
 Name: pure-modal
 ---
 LeKoala\PureModal\PureModal:
-  move_modal_to_body: true
+  move_modal_to_body: false
   overlay_triggers_close: true
   compute_iframe_height: false
+  edit_form_id: 'Form_ItemEditForm'

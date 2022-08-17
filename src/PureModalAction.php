@@ -72,12 +72,30 @@ class PureModalAction extends DatalessField
         return PureModal::getOverlayTriggersCloseConfig();
     }
 
+    /**
+     * If the modal is in the body, it needs to go back to the form to submit properly
+     * @return string
+     */
+    public function SubmitOnClickScript()
+    {
+        if (!PureModal::getMoveModalScript()) {
+            return '';
+        }
+        $formId = PureModal::config()->edit_form_id;
+        return "var f=document.getElementById('$formId');f.appendChild(this.closest('.pure-modal'));f.submit();";
+    }
+
+    /**
+     * Move modal when clicking on the open button. Trigger only once.
+     * @return string
+     */
     public static function getMoveModalScript()
     {
         if (!PureModal::config()->move_modal_to_body) {
             return '';
         }
-        return "document.getElementById('Form_ItemEditForm').appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
+        $formId = PureModal::config()->edit_form_id;
+        return "document.getElementById('$formId').appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
     }
 
     public function getAttributes()
