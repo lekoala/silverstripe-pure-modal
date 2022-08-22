@@ -50,6 +50,13 @@
         "lint-clean": "phpcbf src/ tests/",
         "test": "phpunit -v"
     },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/recipe-plugin": true,
+            "silverstripe/vendor-plugin": true
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
