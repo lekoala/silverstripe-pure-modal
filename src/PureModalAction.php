@@ -2,6 +2,7 @@
 
 namespace LeKoala\PureModal;
 
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\DatalessField;
 
@@ -82,7 +83,7 @@ class PureModalAction extends DatalessField
             return '';
         }
         $formId = PureModal::config()->edit_form_id;
-        return "var f=document.getElementById('$formId');f.appendChild(this.closest('.pure-modal'));f.submit();";
+        return "event.stopPropagation();var f=document.getElementById('$formId');var m=this.closest('.pure-modal');m.style.display='none';f.appendChild(m);f.submit();";
     }
 
     /**
