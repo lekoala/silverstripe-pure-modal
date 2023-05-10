@@ -2,8 +2,9 @@
 
 namespace LeKoala\PureModal;
 
-use SilverStripe\Control\Controller;
+use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\DatalessField;
 
 /**
@@ -235,6 +236,23 @@ class PureModalAction extends DatalessField
             $f->addExtraClass('no-change-track');
         }
         return $this;
+    }
+
+    /**
+     * Make sure our nested fieldlist is bound to form
+     *
+     * @param Form $form
+     * @return $this
+     */
+    public function setForm($form)
+    {
+        //@link https://github.com/unclecheese/silverstripe-display-logic/pull/155#issuecomment-1540966157
+        if ($this->fieldList) {
+            foreach ($this->fieldList as $field) {
+                $field->setForm($form);
+            }
+        }
+        return parent::setForm($form);
     }
 
     /**
