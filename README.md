@@ -1,6 +1,6 @@
 # SilverStripe Pure Modal module
 
-[![Build Status](https://travis-ci.com/lekoala/silverstripe-pure-modal.svg?branch=master)](https://travis-ci.com/lekoala/silverstripe-pure-modal/)
+![Build Status](https://github.com/lekoala/silverstripe-pure-modal/actions/workflows/ci.yml/badge.svg)
 [![scrutinizer](https://scrutinizer-ci.com/g/lekoala/silverstripe-pure-modal/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/lekoala/silverstripe-pure-modal/)
 [![Code coverage](https://codecov.io/gh/lekoala/silverstripe-pure-modal/branch/master/graph/badge.svg)](https://codecov.io/gh/lekoala/silverstripe-pure-modal)
 
