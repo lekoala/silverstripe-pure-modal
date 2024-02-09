@@ -92,11 +92,11 @@
     z-index: -100;
 }
 
-.pure-modal .pure-checkbox:checked ~ .pure-modal-close {
+.pure-modal .pure-checkbox:checked~.pure-modal-close {
     z-index: 9998;
 }
 
-.pure-modal .pure-checkbox:checked ~ .pure-modal-overlay {
+.pure-modal .pure-checkbox:checked~.pure-modal-overlay {
     transform: scale(1);
     opacity: 1;
     z-index: 9997;
@@ -104,13 +104,9 @@
     display: flex;
     animation-duration: 0.3s;
     animation-name: fade-in;
-    -moz-animation-duration: 0.3s;
-    -moz-animation-name: fade-in;
-    -webkit-animation-duration: 0.3s;
-    -webkit-animation-name: fade-in;
 }
 
-.pure-modal .pure-checkbox:checked ~ .pure-modal-overlay .pure-modal-wrap {
+.pure-modal .pure-checkbox:checked~.pure-modal-overlay .pure-modal-wrap {
     transform: translateY(0);
     z-index: 9999;
 }
@@ -141,40 +137,12 @@
         display: none;
         opacity: 0;
     }
-    1% {
-        display: flex;
-        opacity: 0;
-    }
-    100% {
-        display: flex;
-        opacity: 1;
-    }
-}
 
-@-moz-keyframes fade-in {
-    0% {
-        display: none;
-        opacity: 0;
-    }
     1% {
         display: flex;
         opacity: 0;
     }
-    100% {
-        display: flex;
-        opacity: 1;
-    }
-}
 
-@-webkit-keyframes fade-in {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-    1% {
-        display: flex;
-        opacity: 0;
-    }
     100% {
         display: flex;
         opacity: 1;
@@ -186,6 +154,7 @@
 .cms .pure-modal .pure-modal-action {
     padding: 0;
 }
+
 .cms .pure-modal .pure-modal-action .close {
     top: 1rem;
 }
@@ -199,25 +168,20 @@
 .cms .pure-modal .pure-modal-action .form-group {
     padding-bottom: 1.2308rem !important;
 }
-.cms .pure-modal .pure-modal-action .form-group > label {
+
+.cms .pure-modal .pure-modal-action .form-group>label {
     margin-left: 1.5385rem !important;
 }
+
 .cms .pure-modal .pure-modal-action .btn {
     width: auto !important;
 }
-.cms
-    .ss-ui-action-tabset.action-menus.ss-tabset
-    .ui-tabs-panel
-    .pure-modal-action
-    .CompositeField {
+
+.cms .ss-ui-action-tabset.action-menus.ss-tabset .ui-tabs-panel .pure-modal-action .CompositeField {
     margin-left: -1.5385rem;
 }
-.cms
-    .ss-ui-action-tabset.action-menus.ss-tabset
-    .ui-tabs-panel
-    .pure-modal-action
-    .form-group:not(.stacked)
-    > label {
+
+.cms .ss-ui-action-tabset.action-menus.ss-tabset .ui-tabs-panel .pure-modal-action .form-group:not(.stacked)>label {
     padding-top: 0.5385rem;
     padding-bottom: 0.5385rem;
 }
@@ -227,10 +191,12 @@
 .admini .pure-modal .pure-modal-action {
     padding: 0;
 }
+
 .admini .pure-modal .pure-modal-action .btn-close {
     top: 0.5rem;
     float: right;
 }
+
 .admini .pure-modal .pure-modal-action .btn-close span {
     display: none;
 }
