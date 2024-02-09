@@ -2,11 +2,12 @@
 
 namespace LeKoala\PureModal;
 
+use SilverStripe\View\SSViewer;
+use SilverStripe\Forms\FormField;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\DatalessField;
-use SilverStripe\Forms\FormField;
-use SilverStripe\View\SSViewer;
+use SilverStripe\ORM\FieldType\DBHTMLText;
 
 /**
  * A simple pure css modal for usage in the cms
@@ -99,7 +100,7 @@ class PureModal extends DatalessField
      *
      * @param Controller $controller
      * @param array<string,mixed> $customFields
-     * @return string
+     * @return string|DBHTMLText
      */
     public static function renderDialog($controller, $customFields = null)
     {
