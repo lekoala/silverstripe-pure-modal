@@ -99,7 +99,7 @@ By doing like this:
 
 ## Compatibility
 
-Tested with ^4.4 and ^5
+Tested with ^5
 
 ## Maintainer
 
