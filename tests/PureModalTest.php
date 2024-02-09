@@ -6,7 +6,7 @@ use SilverStripe\Dev\SapphireTest;
 
 class PureModalTest extends SapphireTest
 {
-    public function testItWorks()
+    public function testItWorks(): void
     {
         $this->assertTrue(true);
     }

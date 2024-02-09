@@ -38,6 +38,11 @@ class PureModal extends DatalessField
      */
     protected $iframeTop;
 
+    /**
+     * @param string $name
+     * @param string $title
+     * @param string $content
+     */
     public function __construct($name, $title, $content)
     {
         $this->setContent($content);
@@ -45,6 +50,9 @@ class PureModal extends DatalessField
         parent::__construct($name, $title);
     }
 
+    /**
+     * @return string
+     */
     public static function getMoveModalScript()
     {
         if (!self::config()->move_modal_to_body) {
@@ -53,16 +61,26 @@ class PureModal extends DatalessField
         return "document.body.appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
     }
 
+    /**
+     * @return bool
+     */
     public static function getOverlayTriggersCloseConfig()
     {
-        return self::config()->overlay_triggers_close;
+        return boolval(self::config()->overlay_triggers_close);
     }
 
+    /**
+     * For template usage
+     * @return bool
+     */
     public function getOverlayTriggersClose()
     {
         return PureModal::getOverlayTriggersCloseConfig();
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function getAttributes()
     {
         $attrs = [];
@@ -80,7 +98,7 @@ class PureModal extends DatalessField
      * Render a dialog
      *
      * @param Controller $controller
-     * @param array $customFields
+     * @param array<string,mixed> $customFields
      * @return string
      */
     public static function renderDialog($controller, $customFields = null)
@@ -100,7 +118,6 @@ class PureModal extends DatalessField
      * Sets the content of this field to a new value.
      *
      * @param string|FormField $content
-     *
      * @return $this
      */
     public function setContent($content)
@@ -123,7 +140,7 @@ class PureModal extends DatalessField
      * If you want to call actions on a model, use getModelLink
      *
      * @param string $action
-     * @param array $params
+     * @param array<string,mixed> $params
      * @return string
      */
     public function getControllerLink($action, array $params = null)
@@ -214,7 +231,6 @@ class PureModal extends DatalessField
     }
 
     /**
-     *
      * @return string
      */
     public function getModalID()
@@ -223,7 +239,6 @@ class PureModal extends DatalessField
     }
 
     /**
-     *
      * @return string
      */
     public function getIframeID()

@@ -16,7 +16,7 @@ class PureModalAction extends DatalessField
     /**
      * Default classes applied in constructor by the FormField
      * @config
-     * @var array
+     * @var array<string>
      */
     private static $default_classes = ["btn", "btn-info"];
 
@@ -60,6 +60,10 @@ class PureModalAction extends DatalessField
      */
     protected $fillHeight = false;
 
+    /**
+     * @param string $name
+     * @param string $title
+     */
     public function __construct($name, $title)
     {
         $name = 'doCustomAction[' . $name . ']';
@@ -69,6 +73,10 @@ class PureModalAction extends DatalessField
         parent::__construct($name, $title);
     }
 
+    /**
+     * For template usage
+     * @return bool
+     */
     public function getOverlayTriggersClose()
     {
         return PureModal::getOverlayTriggersCloseConfig();
@@ -100,6 +108,9 @@ class PureModalAction extends DatalessField
         return "document.getElementById('$formId').appendChild(this.parentElement.querySelector('.pure-modal'));this.onclick=null;";
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function getAttributes()
     {
         $attrs = [];
@@ -140,6 +151,7 @@ class PureModalAction extends DatalessField
     /**
      * Set dialog button customised button title
      *
+     * @param string $value
      * @return self
      */
     public function setDialogButtonTitle($value)
@@ -206,6 +218,7 @@ class PureModalAction extends DatalessField
     /**
      * Set whether it must display the dialog button
      *
+     * @param string $value
      * @return self
      */
     public function setShowDialogButton($value)
@@ -247,8 +260,10 @@ class PureModalAction extends DatalessField
     public function setForm($form)
     {
         //@link https://github.com/unclecheese/silverstripe-display-logic/pull/155#issuecomment-1540966157
-        if ($this->fieldList) {
-            foreach ($this->fieldList as $field) {
+        /** @var FieldList|null $fieldList */
+        $fieldList = $this->fieldList;
+        if ($fieldList) {
+            foreach ($fieldList as $field) {
                 $field->setForm($form);
             }
         }
@@ -311,21 +326,34 @@ class PureModalAction extends DatalessField
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getModalID()
     {
         return 'modal_' . $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;
     }
 
+    /**
+     * @return bool
+     */
     public function getFillHeight()
     {
         return $this->fillHeight;
     }
 
+    /**
+     * @param bool $fillHeight
+     * @return $this
+     */
     public function setFillHeight($fillHeight)
     {
         $this->fillHeight = $fillHeight;
