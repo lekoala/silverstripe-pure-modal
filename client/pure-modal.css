@@ -186,6 +186,24 @@
     padding-bottom: 0.5385rem;
 }
 
+/* cms-actions support */
+
+.cms #ActionMenus_MoreOptions label {
+    border-radius: 0;
+    background: none;
+    border: none;
+    color: #0071c4;
+    display: block;
+    font-weight: normal;
+    margin: 0;
+    outline: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    text-shadow: none;
+    white-space: normal;
+}
+
 /* admini support */
 
 .admini .pure-modal .pure-modal-action {
