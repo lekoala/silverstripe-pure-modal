@@ -40,6 +40,11 @@ class PureModal extends DatalessField
     protected $iframeTop;
 
     /**
+     * @var string|null
+     */
+    protected $buttonIcon = null;
+
+    /**
      * @param string $name
      * @param string $title
      * @param string $content
@@ -163,6 +168,20 @@ class PureModal extends DatalessField
     }
 
     /**
+     * @param array<string,mixed> $properties
+     * @return DBHTMLText
+     */
+    public function Field($properties = [])
+    {
+        $icon = $this->buttonIcon;
+        if ($icon) {
+            $this->addExtraClass('font-icon');
+            $this->addExtraClass('font-icon-' . $icon);
+        }
+        return parent::Field($properties);
+    }
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -245,5 +264,29 @@ class PureModal extends DatalessField
     public function getIframeID()
     {
         return $this->getModalID() . '_iframe';
+    }
+
+    /**
+     * Get an icon for this button
+     *
+     * @return string|null
+     */
+    public function getButtonIcon()
+    {
+        return $this->buttonIcon;
+    }
+
+    /**
+     * Set an icon for this button
+     *
+     * Feel free to use SilverStripeIcons constants
+     *
+     * @param string|null $buttonIcon An icon for this button
+     * @return $this
+     */
+    public function setButtonIcon(string $buttonIcon = null)
+    {
+        $this->buttonIcon = $buttonIcon;
+        return $this;
     }
 }

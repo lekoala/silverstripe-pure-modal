@@ -1,6 +1,6 @@
 <% require css('lekoala/silverstripe-pure-modal: client/pure-modal.css') %>
 
-<label for="$ModalID" class="btn btn-primary" $AttributesHTML>
+<label for="$ModalID" class="btn btn-primary<% if $extraClass %> $extraClass<% end_if %>" $AttributesHTML>
     $Title
 </label>
 <div class="pure-modal from-top">
