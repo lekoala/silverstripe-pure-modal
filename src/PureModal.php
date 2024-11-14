@@ -53,7 +53,15 @@ class PureModal extends DatalessField
     {
         $this->setContent($content);
 
+        // If you want, you can remove this and switch to another type
+        $this->addExtraClass('btn-primary');
+
         parent::__construct($name, $title);
+    }
+
+    public function Type()
+    {
+        return 'pure-modal';
     }
 
     /**
