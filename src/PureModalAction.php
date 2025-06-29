@@ -4,7 +4,6 @@ namespace LeKoala\PureModal;
 
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Control\Controller;
 use SilverStripe\Forms\DatalessField;
 
 /**
