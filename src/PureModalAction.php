@@ -72,6 +72,11 @@ class PureModalAction extends DatalessField
         parent::__construct($name, $title);
     }
 
+    public function Type()
+    {
+        return 'modal-action';
+    }
+
     /**
      * For template usage
      * @return bool
