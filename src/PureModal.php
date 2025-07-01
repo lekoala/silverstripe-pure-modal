@@ -122,8 +122,7 @@ class PureModal extends DatalessField
             $customFields['Content'] = '';
         }
 
-        $templates = SSViewer::get_templates_by_class(static::class, '_Dialog', __CLASS__);
-        $templatesWithSuffix = SSViewer::chooseTemplate($templates);
+        $templatesWithSuffix = SSViewer::get_templates_by_class(static::class, '_Dialog', __CLASS__);
 
         return $controller->renderWith($templatesWithSuffix, $customFields);
     }
