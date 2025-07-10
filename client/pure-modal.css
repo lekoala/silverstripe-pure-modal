@@ -3,7 +3,8 @@
 }
 
 .pure-modal {
-    display: inline; /* Otherwise the holder will break flow */
+    display: inline-block;
+    /* Otherwise the holder will break flow */
 }
 
 /* Gray background, close handler must be on the same level as the modal */
