@@ -156,7 +156,7 @@ class PureModal extends DatalessField
      * @param array<string,mixed> $params
      * @return string
      */
-    public function getControllerLink($action, array $params = null)
+    public function getControllerLink($action, ?array $params = null)
     {
         if ($params === null) {
             $params = [];
@@ -291,7 +291,7 @@ class PureModal extends DatalessField
      * @param string|null $buttonIcon An icon for this button
      * @return $this
      */
-    public function setButtonIcon(string $buttonIcon = null)
+    public function setButtonIcon(?string $buttonIcon = null)
     {
         $this->buttonIcon = $buttonIcon;
         return $this;
