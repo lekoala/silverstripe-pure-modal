@@ -39,6 +39,18 @@ class PureModalTest extends SapphireTest
     }
 
     /**
+     * @test
+     */
+    public function controllerLinkReturnsNullWithoutUrlSegment(): void
+    {
+        Controller::curr()->config()->set('url_segment', null);
+
+        $modal = new PureModal('test', 'test title', 'some content');
+
+        $this->assertNull($modal->getControllerLink('testaction'));
+    }
+
+    /**
      * Run some basic stuff to make sure we don't get obvious issues
      *
      * @return void

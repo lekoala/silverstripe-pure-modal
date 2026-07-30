@@ -155,7 +155,7 @@ class PureModal extends DatalessField
      *
      * @param string $action
      * @param array<string,mixed> $params
-     * @return string
+     * @return string|null
      */
     public function getControllerLink($action, array $params = null)
     {
@@ -163,6 +163,9 @@ class PureModal extends DatalessField
             $params = [];
         }
         $ctrl = Controller::curr();
+        if (!$ctrl->config()->get('url_segment')) {
+            return null;
+        }
         if ($ctrl instanceof ModelAdmin) {
             $allParams = $ctrl->getRequest()->allParams();
             $modelClass = $ctrl->getRequest()->param('ModelClass');
